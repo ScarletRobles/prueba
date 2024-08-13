@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> cabeza de paginas </title>
+</head>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  header {
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 40px;
+  }
+  /* Estilos para el menú de navegación */
+nav {
+    background-color: #333; /* Fondo del menú */
+    padding: 0.5rem 0;
+}
+
+nav ul {
+    list-style-type: none; /* Quitar los puntos de lista */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centrar el menú horizontalmente */
+}
+
+nav ul li {
+    margin: 0 1rem; /* Espacio entre los elementos del menú */
+}
+
+nav ul li a {
+    color: #fff; /* Color del texto del menú */
+    text-decoration: none; /* Quitar el subrayado */
+    font-weight: bold; /* Negrita para el texto */
+    transition: color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+nav ul li a:hover {
+    color: #0619c8; /* Color del texto cuando el ratón está sobre el enlace */
+}
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  .motorcycle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .motorcycle-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  .motorcycle-card:hover {
+    transform: translateY(-5px);
+  }
+  .motorcycle-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .motorcycle-info {
+    padding: 1rem;
+  }
+  h2 {
+    color: #1a1a1a;
+    margin-top: 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background-color: #03129c;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  .cta-button:hover {
+    background-color: #03129c;
+  }
+  
+
+</style></head><body>
+  <header>
+    <h1> MUNDOSBK</h1>
+    <p>Tu Pasión sobre Dos Ruedas</p>
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#noticias">Noticias</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+    </ul>
+  </nav>
+  
+
+  <div class="container">
+    <form action="{{ url_for('buscar_motos') }}" method="get">
+        <label for="query">Buscar:</label>
+        <input type="text" name="query" id="query" placeholder="Ingrese marca o nombre">
+        <button type="submit">Buscar</button>
+    </form>
+    <h2>Bienvenido a MUNDOSBK, {{ user_nombre }}</h2>
+    <div class="motorcycle-grid">
+      <div class="motorcycle-card">
+        <img src=""  alt="Moto deportiva negra, estilo melo" class="motorcycle-image" width="640" height="480">
+        <div class="motorcycle-info">
+          <h3>SuperSport 950</h3>
+          <p>Potencia y agilidad en un diseño impresionante.</p>
+          <a href="https://moto-enthusiast.example.com/supersport-950" class="cta-button">Más información</a>
+        </div>
+      </div>
+      <div class="motorcycle-card">
+        <img src="/app/static/uploads/cbr.jpg" alt="Moto custom negra, estilo clásico" class="motorcycle-image" width="640" height="480">
+        <div class="motorcycle-info">
+          <h3>Cruiser Deluxe</h3>
+          <p>Confort y estilo para largos viajes por carretera.</p>
+          <a href="https://moto-enthusiast.example.com/cruiser-deluxe" class="cta-button">Más información</a>
+        </div>
+      </div>
+      <div class="motorcycle-card">
+        <img src="https://placeimg.com/640/480/tech/3" alt="Moto de aventura verde, preparada para todo terreno" class="motorcycle-image" width="640" height="480">
+        <div class="motorcycle-info">
+          <h3>Adventure Explorer</h3>
+          <p>Domina cualquier terreno con esta bestia todoterreno.</p>
+          <a href="https://moto-enthusiast.example.com/adventure-explorer" class="cta-button">Más información</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body></html>

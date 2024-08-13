@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actualizar</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+    <h2>Editar Moto</h2>
+    <form method="post" enctype="multipart/form-data">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ motos.nombre }}" required><br>
+        
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" value="{{ motos.cantidad }}" required><br>
+        
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" value="{{ motos.precio }}" required><br>
+        
+        <label for="foto">Foto:</label>
+        <input type="file" id="foto" name="foto" accept="image/*"><br>
+        {% if motos.foto %}
+        <img src="{{ url_for('static', filename='uploads/' ~ motos.foto) }}" alt="Foto de {{ motos.nombre }}" width="100"><br>
+        {% endif %}
+        
+        <label for="marca_id">Marca:</label>
+        <select id="marca_id" name="marca_id" required>
+            {% for marca in marcas %}
+            <option value="{{ marca.id }}" {% if marca.id == motos.marca_id %}selected{% endif %}>{{ marca.serie }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <button type="submit">Actualizar Moto</button>
+    </form>
+    {% endblock %}
+</body>
+</html>

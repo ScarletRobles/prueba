@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>motos de buqueda</title>
+</head>
+<body>
+    <!-- templates/resultados.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Resultados de la Búsqueda</h2>
+<ul>
+    {% for moto in motos %}
+        <li>
+            <p>Nombre: {{ moto.nombre }}</p>
+            <p>Cantidad: {{ moto.cantidad }}</p>
+            <p>Precio: {{ moto.precio }}</p>
+            <td>
+                {% if moto.foto %}
+                    <img src="{{ url_for('static', filename='uploads/' ~ moto.foto) }}" 
+                    alt="Foto de {{ moto.nombre }}" width="100">
+                {% else %}
+                    No disponible
+                {% endif %}
+            </td>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+</body>
+</html>
